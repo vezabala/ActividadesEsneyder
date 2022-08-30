@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// Actividad1 Herencia
 
 using ConsoleApp1;
 
