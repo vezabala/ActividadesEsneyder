@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Actividad5.Models
 {
-    internal class Enterprise :Entity
+    public class Enterprise :Entity
     {
         public string Nit { get; private set; }
 
@@ -14,13 +14,18 @@ namespace Actividad5.Models
 
         public List<Project> Projects { get; private set; }
 
-        public Enterprise(string id, string nit) : base(id)
+        private Enterprise(string id, string nit) : base(id)
         {
             Nit = nit;
 
             Employees = new();
 
             Projects = new();
+        }
+
+        public static Enterprise Build(string id, string nit)
+        {
+            return new Enterprise(id, nit);
         }
 
         public void AddEmployees(Employee employee)
