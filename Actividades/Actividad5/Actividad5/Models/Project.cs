@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Actividad5.Models
 {
-    public class Project :Entity
+    internal class Project :Entity
     {
         public string Name { get; private set; }
 

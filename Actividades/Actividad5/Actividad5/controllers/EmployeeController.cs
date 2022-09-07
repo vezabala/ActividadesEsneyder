@@ -10,7 +10,7 @@ namespace Actividad5.controllers
 {
     internal class EmployeeController
     {
-        private IVista<Employee> vista;
+        private readonly IVista<Employee> vista;
 
         public EmployeeController(IVista<Employee> vista)
         {

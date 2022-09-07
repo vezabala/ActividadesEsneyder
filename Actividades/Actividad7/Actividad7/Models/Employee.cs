@@ -20,8 +20,7 @@
 
         }
 
-        public Employee(Guid id, string identification, string name, DateTime fechaDeIngreso,
-            Guid enterpriseId) : base(id)
+        private Employee(Guid id, string identification, string name, DateTime fechaDeIngreso, Guid enterpriseId) : base(id)
         {
             Identification = identification;
             Name = name;
@@ -29,7 +28,7 @@
             EnterpriseId = enterpriseId;
         }
 
-        public Employee Build(Guid id, string identification, string name, 
+        public static Employee Build(Guid id, string identification, string name, 
             DateTime fechaDeIngreso, Guid enterpriseId)
         {
             return new Employee(id, identification, name, fechaDeIngreso, enterpriseId);

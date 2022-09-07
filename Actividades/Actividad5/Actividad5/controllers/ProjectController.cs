@@ -10,7 +10,7 @@ namespace Actividad5.controllers
 {
     internal class ProjectController
     {
-        private IVista<Project> vista;
+        private readonly IVista<Project> vista;
 
         public ProjectController(IVista<Project> vista)
         {

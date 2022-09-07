@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Actividad5.Models
 {
-    public class Employee :Entity
+    internal class Employee :Entity
     {
         public string Identification { get; private set; }
 
