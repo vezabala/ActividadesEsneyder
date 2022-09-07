@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Actividad5.Models
 {
-    internal class Enterprise :Entity
+    public class Enterprise :Entity
     {
         public string Nit { get; private set; }
 

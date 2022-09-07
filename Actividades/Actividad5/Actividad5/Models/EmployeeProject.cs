@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Actividad5.Models
 {
-    internal class EmployeeProject :Entity
+    public class EmployeeProject :Entity
     {
         public string EmployeeId { get; private set; }
         public string ProjectId { get; private set; }
