@@ -1,4 +1,5 @@
 using Actividad7.Data;
+using Actividad7.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,8 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//INYECCION DE DEPENDENCIAS
+builder.Services.AddScoped<IRepository, Repository>();
+builder.Services.AddScoped<EnterpriseService>();
+
+//config de db
 builder.Services.AddDbContext<Actividad7Context>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("WebConnectionString")));
 
 var app = builder.Build();
 

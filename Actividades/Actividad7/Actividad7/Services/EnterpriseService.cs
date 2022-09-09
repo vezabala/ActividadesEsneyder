@@ -33,6 +33,11 @@ namespace Actividad7.Services
             return await this.repository.GetAll<Enterprise>();
         }
 
+        public async Task<Enterprise> GetById(int id)
+        {
+            return await this.repository.GetById<Enterprise>(id);
+        }
+
         public async Task Delete(Enterprise enterprise)
         {
             this.repository.Delete(enterprise);

@@ -8,7 +8,7 @@
 
         public DateTime FechaDeIngreso { get; private set; }
 
-        public Guid EnterpriseId { get; private set; }
+        public int EnterpriseId { get; private set; }
 
         public Enterprise Enterprise { get; private set; }
 
@@ -20,7 +20,7 @@
 
         }
 
-        private Employee(Guid id, string identification, string name, DateTime fechaDeIngreso, Guid enterpriseId) : base(id)
+        private Employee(int id, string identification, string name, DateTime fechaDeIngreso, int enterpriseId) : base(id)
         {
             Identification = identification;
             Name = name;
@@ -28,8 +28,8 @@
             EnterpriseId = enterpriseId;
         }
 
-        public static Employee Build(Guid id, string identification, string name, 
-            DateTime fechaDeIngreso, Guid enterpriseId)
+        public static Employee Build(int id, string identification, string name, 
+            DateTime fechaDeIngreso, int enterpriseId)
         {
             return new Employee(id, identification, name, fechaDeIngreso, enterpriseId);
         }

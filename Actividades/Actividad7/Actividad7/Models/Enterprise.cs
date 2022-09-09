@@ -18,7 +18,7 @@
 
         }
 
-        private Enterprise(Guid id, string nit, string name, string direccion):base(id)
+        private Enterprise(int id, string nit, string name, string direccion):base(id)
         {
             Nit = nit;
             Name = name;
@@ -26,7 +26,7 @@
             Employees = new();
         }
 
-        public static Enterprise Build(Guid id, string nit, string name, string direccion)
+        public static Enterprise Build(int id, string nit, string name, string direccion)
         {
             return new Enterprise(id, nit, name, direccion);
         }

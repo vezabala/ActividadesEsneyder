@@ -21,9 +21,9 @@ namespace Actividad7.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(string identification, string name, DateTime fechaDeIngreso, Guid enterpriseId)
+        public async Task<IActionResult> Create(int id,string identification, string name, DateTime fechaDeIngreso, int enterpriseId)
         {
-            var employee = Employee.Build(Guid.NewGuid(), identification, name , fechaDeIngreso, enterpriseId);
+            var employee = Employee.Build(id, identification, name , fechaDeIngreso, enterpriseId);
             await this.employeeServicee.Create(employee);
             return View();
         }
@@ -35,7 +35,7 @@ namespace Actividad7.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Guid id, string identification, string name, DateTime fechaDeIngreso, Guid enterpriseId)
+        public async Task<IActionResult> Update(int id, string identification, string name, DateTime fechaDeIngreso, int enterpriseId)
         {
             var employee = Employee.Build(id, identification, name, fechaDeIngreso, enterpriseId);
             await this.employeeServicee.Update(employee);
@@ -43,7 +43,7 @@ namespace Actividad7.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(Guid id, string identification, string name, DateTime fechaDeIngreso, Guid enterpriseId)
+        public async Task<IActionResult> Delete(int id, string identification, string name, DateTime fechaDeIngreso, int enterpriseId)
         {
             var employee = Employee.Build(id, identification, name, fechaDeIngreso, enterpriseId);
             await this.employeeServicee.Delete(employee);

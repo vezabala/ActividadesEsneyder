@@ -20,12 +20,26 @@ namespace Actividad7.Controllers
             return View(enterprises);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(string nit, string name, string direccion)
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
         {
-            var enterprise = Enterprise.Build(Guid.NewGuid(),nit, name, direccion);
-            await this.enterpriseService.Create(enterprise);
-            return View();
+            var enterprise = await enterpriseService.GetById(id);
+            return View(enterprise);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(int id,string nit, string name, string direccion)
+        {
+            if (ModelState.IsValid)
+            {
+                var enterprise = Enterprise.Build(id, nit, name, direccion);
+                await this.enterpriseService.Create(enterprise);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         [HttpGet]
@@ -34,20 +48,28 @@ namespace Actividad7.Controllers
             return View();
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Update(Guid id, string nit, string name, string direccion)
+        [HttpPost]
+        public async Task<IActionResult> Update(int id, string nit, string name, string direccion)
         {
-            var enterprise = Enterprise.Build(id, nit, name, direccion);
-            await this.enterpriseService.Update(enterprise);
-            return View();
+            if (ModelState.IsValid)
+            {
+                var enterprise = Enterprise.Build(id, nit, name, direccion);
+                await this.enterpriseService.Update(enterprise);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(Guid id, string nit, string name, string direccion)
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
         {
-            var enterprise = Enterprise.Build(id, nit, name, direccion);
-            await this.enterpriseService.Delete(enterprise);
-            return View();
+            var consulta = await enterpriseService.GetById(id);
+           // var enterprise = Enterprise.Build(id, consulta.Nit, consulta.Name, consulta.Direccion);
+            await this.enterpriseService.Delete(consulta);
+            return Content("1");
         }
     }
 }

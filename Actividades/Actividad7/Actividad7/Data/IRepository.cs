@@ -12,6 +12,8 @@ namespace Actividad7.Data
 
         public Task<List<T>> GetAll<T>() where T : Entity;
 
+        public Task<T> GetById<T>(int id)where T : Entity;
+
         public Task Commit();
     }
 }
